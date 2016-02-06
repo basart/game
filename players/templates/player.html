@@ -1,0 +1,40 @@
+{%extends 'page_players_with_search.html'%}
+{% block player %}
+
+    <div class="container">
+        <div class="row">
+        <table class="table ">
+        <thead class="thead-inverse">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Xp</th>
+            <th colspan="2"></th>
+            <th>Password</th>
+            <th>Created</th>
+            <th>Updated</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <h2>
+            <td>{{player.id}}</td>
+            {% if user.is_staff or user.is_superuser %}
+                <td><a href="/players/player/{{player.id}}/" >{{player}} </a></td>
+            {% else %}
+                <td> {{player}} </td>
+            {% endif %}
+            <td>{{player.email}}</td>
+            <td colspan="2">{{player.xp}}</td>
+            <td><a href="/player/change_xp/{{player.id}}/"> change xp</a></td>
+            <td>{{player.password_hash}}</td>
+            <td>{{player.created}}</td>
+            <td>{{player.updated}}</td>
+            </h2>
+                    </tr>
+        </tbody>
+        </table>
+        </div>
+    </div>
+{% endblock %}

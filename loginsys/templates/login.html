@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{%load staticfiles%}
+{%load bootstrap%}
+{% block login %}
+
+    <div class="cent">
+        <form class="form-horizontal" action="/auth/login/" method="post">
+            {% csrf_token %}
+            <input type="hidden" id="next" name="next" value="{{ request.GET.next }}" />
+            {{ form|bootstrap_horizontal }}
+            {% if login_error %}
+                <label class="error">{{ login_error }}</label>
+            {% endif %}
+            <input class="btn btn-primary" type="submit" value="Войти">
+        </form>
+    </div>
+
+{% endblock %}

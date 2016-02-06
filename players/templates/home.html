@@ -1,0 +1,13 @@
+{%extends 'main.html'%}
+{% load staticfiles %}
+
+{%block home%}
+<div class="centered text-center">
+    {% if user.username %}
+        <h1>Hello, {{user.username}}!</h1>
+    {% else %}
+        <h1>Hello!</h1>
+    {%endif%}
+    <h3> It's me! </h3>
+</div>
+{%endblock%}

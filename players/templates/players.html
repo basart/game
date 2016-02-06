@@ -1,0 +1,72 @@
+{%extends 'page_players_with_search.html'%}
+{% load staticfiles %}
+{% load blabla %}
+{% block players %}
+
+
+<div class="container">
+    <div class="centered text-center">
+    <table class="table ">
+        <thead class="thead-inverse">
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Xp</th>
+              <th colspan="2"></th>
+              <th>Password</th>
+              <th>Created</th>
+              <th>Updated</th>
+            </tr>
+        </thead>
+    <tbody>
+    <h1>{{player_id}}</h1>
+    {%for player in players%}
+        <tr>
+        <h3>
+            <td>{{player.id}}</td>
+            {% if user.is_staff or user.is_superuser %}
+                <td><a href="/players/player/{{player.id}}/" >{{player}} </a></td>
+            {% else %}
+                <td> {{player}} </td>
+            {% endif %}
+            <td>{{player.email}}</td>
+            <td colspan="2">{{player.xp}}</td>
+            <td><a href="/player/change_xp/{{player.id}}/"> change xp</a></td>
+            <td>{{player.password_hash|cut}}</td>
+            <td>{{player.created}}</td>
+            <td>{{player.updated}}</td>
+        </h3>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="pagination">
+            <ul class="pagination">
+                {% if players.has_previous %}
+                    <li ><a href="/players/page/{{ players.previous_page_number }}/">Prev</a></li>
+                {% else %}
+                    <li ><a href="">Prev</a></li>
+                {% endif %}
+                {% for page in players.paginator.page_range %}
+                    {% if page == players.number %}
+                        <li class="active"><a href="/players/page/{{ page }}/">{{ page }}</a></li>
+                    {% else %}
+                        <li><a href="/players/page/{{ page }}/">{{ page }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if players.has_next %}
+                    <li ><a href="/players/page/{{ players.next_page_number }}/">Next</a></li>
+                {% else %}
+                    <li ><a href="">Next</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

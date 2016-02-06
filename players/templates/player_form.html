@@ -1,0 +1,22 @@
+{%extends 'main.html'%}
+{% load staticfiles %}
+{%load bootstrap%}
+{%block player_form%}
+
+<div class="container">
+    <div class="row">
+        <div class="span12">
+
+            <form class="form-horizontal" method="post" action="/players/player/{{player.id}}/" role="form">
+                <legend>The form to change the player data</legend>
+                {% csrf_token %}
+                {{ form|bootstrap_horizontal }}
+                <div class="col-sm-offset-2 col-sm-15">
+                    <input class="btn btn-primary" value="Change" type="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,19 @@
+{%extends 'players.html'%}
+{% load staticfiles %}
+{% load bootstrap %}
+
+{%block search_form%}
+
+<div class="container">
+	<div class="row">
+        <div class="span12">
+            <form id="custom-search-form" class="form-search form-horizontal pull-right">
+                <div class="input-append span12">
+                    <input type="text" class="search-query mac-style" placeholder="Search" name="search_box" id="id_search_box">
+                    <button type="submit" class="btn"><i class="icon-search"></i></button>
+                </div>
+            </form>
+        </div>
+	</div>
+</div>
+{%endblock%}
