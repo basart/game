@@ -29,9 +29,9 @@
             <li><a href="/admin/">Admin</a></li>
               {% endif %}
           {% if user.username %}
-              <li><a href="/auth/logout/">Выйти ({{ user.username }})</a></li>
+              <li><a href="/auth/logout/">Log out({{ user.username }})</a></li>
           {% else %}
-              <li><a href="/auth/login/">Войти</a></li>
+              <li><a href="/auth/login/">Log in</a></li>
           {% endif %}
           </ul>
   </div>
