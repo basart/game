@@ -14,6 +14,7 @@ class LogGameEvents(models.Model):
     class Meta:
         managed = False
         db_table = 'log_game_events'
+        verbose_name_plural = "Log game events"
 
 
 class PlayerAchievements(models.Model):
@@ -25,6 +26,7 @@ class PlayerAchievements(models.Model):
         managed = False
         db_table = 'player_achievements'
         #unique_together = (('player_id', 'achievement_id'),)
+        verbose_name_plural = "Players achievements"
 
 
 class PlayerSessions(models.Model):
@@ -37,6 +39,7 @@ class PlayerSessions(models.Model):
     class Meta:
         managed = False
         db_table = 'player_sessions'
+        verbose_name_plural = "Players sessions"
 
 
 class PlayerStats(models.Model):
@@ -48,6 +51,7 @@ class PlayerStats(models.Model):
     class Meta:
         managed = False
         db_table = 'player_stats'
+        verbose_name_plural = "Players Stats"
 
 
 class Players(models.Model):
@@ -61,6 +65,7 @@ class Players(models.Model):
     class Meta:
         managed = False
         db_table = 'players'
+        verbose_name_plural = "Players"
 
     def __unicode__(self):
         return self.nickname

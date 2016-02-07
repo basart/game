@@ -38,7 +38,8 @@ def show_player_form(request, player_id):
         args = {}
         if request.method == 'POST':
             form = PlayersForm(request.POST, instance=player)
-            form.save()
+            if form.is_valid():
+                form.save()
             return redirect('/players/')
         else:
             args.update(csrf(request))
